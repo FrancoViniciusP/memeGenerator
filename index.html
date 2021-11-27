@@ -7,9 +7,24 @@
     <title>Meme Generator</title>
     <style>
         #meme-image-container {
+          position: absolute;
           border: 1px solid black;
           width: 400px;
           height: 400px;
+          background-color: white;
+          z-index: -1;
+        }
+
+        #meme.text {
+            position: absolute;
+            top: 100px;
+            z-index: 3;
+        }
+
+        #meme-image {
+            position: absolute;
+            top: 0px;
+            z-index: 2;
         }
 
 
@@ -17,9 +32,10 @@
 </head>
 <body>
     <input type="text" id='text-input'>
-    <input type="file">
+    <input type="file" accept="image./*" onchange="insert(event)" id="meme-insert">
     <div id="meme-image-container">
-        <div id="meme-text"></div>
+        <img id="meme-image" src="" alt="">
+        <div id="meme-text">adsadsadsa</div>
     </div>
     
     <script>
@@ -30,6 +46,19 @@
             textContainer.innerText = inputText.value;
             console.log(inputText.value);
         })
+
+        const memeInsert = document.getElementById('meme-insert');
+        const memeImage = document.getElementById('meme-image');
+        const imageContainer = document.getElementById('meme-image-container');
+        var insert = function (event){
+            let file = event.target.files[0];
+            memeImage.src = URL.createObjectURL(file);
+            memeImage.style.height = '400px';
+            memeImage.style.width = '400px';
+        } 
+        
+        
+        
        
      
         
