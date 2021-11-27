@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <style>
+        #meme-image-container {
+          border: 1px solid black;
+          width: 400px;
+          height: 400px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <input type="text" id='text-input'>
+    <input type="file">
+    <div id="meme-image-container">
+        <div id="meme-text"></div>
+    </div>
+    
+    <script>
+        const inputText = document.getElementById("text-input");
+        const textContainer = document.getElementById('meme-text');
+
+        inputText.addEventListener('keyup', function () {
+            textContainer.innerText = inputText.value;
+            console.log(inputText.value);
+        })
+       
+     
+        
+
+
+    </script>
+</body>
+</html>
