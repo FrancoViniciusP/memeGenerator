@@ -5,65 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
-    <style>
-        #meme-image-container {
-          position: absolute;
-          border: 1px solid black;
-          width: 400px;
-          height: 400px;
-          background-color: white;
-          z-index: 0;
-          
-        }
-
-        #meme-text {
-            position: absolute;
-            top: 300px;
-            z-index: 1;
-            text-shadow: 5px 5px 5px black;
-            font-size: 30px;
-            color: white;
-            text-align: center;
-            margin-left: 10%;
-        }
-
-        #meme-image {
-            position: absolute;
-            top: 0px;
-            z-index: -1;
-        }
-
-        #fire {
-            border: 3px dashed rgb(255, 0, 0);
-            background-color: rgb(255, 0, 0);
-        }
-
-        #water {
-            border: 5px double rgb(0, 0, 255);
-            background-color: rgb(0, 0, 255);
-        }
-
-        #earth {
-            border: 6px groove rgb(0, 128, 0);
-            background-color: rgb(0, 128, 0);
-        }
-
-        #meme-container{
-            position: absolute;
-             display: flex;
-             top: 500px;
-            
-        }
-
-        .meme-box {
-            width: 80px;
-            height: 80px;
-            border: 2px solid black;
-            margin: 5px;
-        }
-
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <input type="text" id='text-input' maxlength="60">
@@ -84,64 +26,6 @@
         <img id='meme-4' class='meme-box'src="imgs/meme4.png" alt="">
     </div>
     
-    <script>
-        const inputText = document.getElementById("text-input");
-        const textContainer = document.getElementById('meme-text');
-
-        inputText.addEventListener('keyup', function () {
-            textContainer.innerText = inputText.value;
-        })
-
-        const memeInsert = document.getElementById('meme-insert');
-        const memeImage = document.getElementById('meme-image');
-        const imageContainer = document.getElementById('meme-image-container');
-        var insert = function (event){
-            let file = event.target.files[0];
-            memeImage.src = URL.createObjectURL(file);
-            memeImage.style.height = '400px';
-            memeImage.style.width = '400px';
-        } 
-
-        const buttonFire = document.getElementById('fire');
-        const buttonWater = document.getElementById('water');
-        const buttonEarth = document.getElementById('earth');
-
-        buttonFire.addEventListener('click', function() {
-            imageContainer.style.border = '3px dashed rgb(255, 0, 0)';
-        })
-        buttonWater.addEventListener('click', function() {
-            imageContainer.style.border = '5px double rgb(0, 0, 255)';
-        })
-        buttonEarth.addEventListener('click', function() {
-            imageContainer.style.border = '6px groove rgb(0, 128, 0)';
-        })
-
-        const memes = document.getElementsByClassName('meme-box');
-
-        function memeButtons () {
-            for (let i = 0; i < memes.length; i+=1) {
-                memes[i].addEventListener('click', selectMeme);
-            }
-        }
-
-        memeButtons();
-
-        function selectMeme() {
-            memeImage.src = event.target.src;
-            memeImage.style.height = '400px';
-            memeImage.style.width = '400px';
-        }
-
-
-        
-            
-        
-        
-       
-     
-        
-
-
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
