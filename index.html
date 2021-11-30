@@ -18,7 +18,7 @@
 
         #meme-text {
             position: absolute;
-            top: 100px;
+            top: 300px;
             z-index: 1;
             text-shadow: 5px 5px 5px black;
             font-size: 30px;
@@ -33,15 +33,52 @@
             z-index: -1;
         }
 
+        #fire {
+            border: 3px dashed rgb(255, 0, 0);
+        }
+
+        #water {
+            border: 5px double rgb(0, 0, 255);
+        }
+
+        #earth {
+            border: 6px groove rgb(0, 128, 0);
+        }
+
+        #meme-container{
+            position: absolute;
+             display: flex;
+             top: 500px;
+            
+        }
+
+        .meme-box {
+            width: 80px;
+            height: 80px;
+            border: 2px solid black;
+            margin: 5px;
+        }
+
 
     </style>
 </head>
 <body>
     <input type="text" id='text-input' maxlength="60">
     <input type="file" accept="image./*" onchange="insert(event)" id="meme-insert">
+    <br>
+    <button id="fire">Borda 1</button>
+    <button id="water">Borda 2</button>
+    <button id="earth">Borda 3</button>
     <div id="meme-image-container">
         <img id="meme-image" src="" alt="">
-        <div id="meme-text">csdcdscdscdccdcdcdcdcdcdcdcdcdcdcdcd</div>
+        <div id="meme-text"></div>
+    </div>
+    <br>
+    <div id="meme-container">
+        <img id='meme-1' class='meme-box'src="imgs/meme1.png" alt="">
+        <img id='meme-2' class='meme-box'src="imgs/meme2.png" alt="">
+        <img id='meme-3' class='meme-box'src="imgs/meme3.png" alt="">
+        <img id='meme-4' class='meme-box'src="imgs/meme4.png" alt="">
     </div>
     
     <script>
@@ -50,7 +87,6 @@
 
         inputText.addEventListener('keyup', function () {
             textContainer.innerText = inputText.value;
-            console.log(inputText.value);
         })
 
         const memeInsert = document.getElementById('meme-insert');
@@ -62,7 +98,40 @@
             memeImage.style.height = '400px';
             memeImage.style.width = '400px';
         } 
+
+        const buttonFire = document.getElementById('fire');
+        const buttonWater = document.getElementById('water');
+        const buttonEarth = document.getElementById('earth');
+
+        buttonFire.addEventListener('click', function() {
+            imageContainer.style.border = '3px dashed rgb(255, 0, 0)';
+        })
+        buttonWater.addEventListener('click', function() {
+            imageContainer.style.border = '5px double rgb(0, 0, 255)';
+        })
+        buttonEarth.addEventListener('click', function() {
+            imageContainer.style.border = '6px groove rgb(0, 128, 0)';
+        })
+
+        const memes = document.getElementsByClassName('meme-box');
+
+        function memeButtons () {
+            for (let i = 0; i < memes.length; i+=1) {
+                memes[i].addEventListener('click', selectMeme);
+            }
+        }
+
+        memeButtons();
+
+        function selectMeme() {
+            memeImage.src = event.target.src;
+            memeImage.style.height = '400px';
+            memeImage.style.width = '400px';
+        }
+
+
         
+            
         
         
        
